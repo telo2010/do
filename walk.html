@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>CodePen - Pen</title>
+
+  <style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+</style>
+
+    <style>
+.tuna {
+  animation: walk-cycle 1s steps(12) infinite;
+  background: url(gambar1/tuna_sprite.png) 0 0 no-repeat; 
+  height: 200px;
+  width: 400px;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  margin-left: -200px;
+  transform: translateZ(0); /* offers a bit of a performance boost by pushing some of this processing to the GPU in Safari*/
+}
+
+@keyframes walk-cycle {  
+  0% {background-position: 0 0; } 
+  100% {background-position: 0 -2391px; } 
+}
+
+.foreground, .midground, .background {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 200; left: 100;
+  translate3d(0,0,0); 
+}
+
+.foreground {
+  animation: parallax_fg linear 10s infinite both;
+  background:  url(gambar1/foreground_grass.png) 0 100% repeat-x;
+  z-index: 3;
+}
+
+@keyframes parallax_fg {  
+  0% { background-position: -3584px 100%;} 
+  100% {background-position: 0 100%; } 
+}
+
+.midground {
+  animation: parallax_mg linear 20s infinite;
+  background:  url(gambar1/midground_grass.png) 0 100% repeat-x;
+  z-index: 2;
+}
+
+@keyframes parallax_mg {  
+  0% { background-position: -3000px 100%;} 
+  100% {background-position: 0 100%; } 
+}
+
+.background {
+  background-image:
+    url(gambar1/background_mountain5.png),
+    url(gambar1/background_mountain4.png),
+    url(gambar1/background_mountain3.png),
+    url(gambar1/background_mountain2.png),
+    url(gambar1/background_mountain1.png);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  z-index: 1;
+  animation: parallax_bg linear 40s infinite;
+}
+
+@keyframes parallax_bg {  
+  0% { background-position: -2400px 100%, -2000px 100%, -1800px 100%, -1600px 100%, -1200px 100%;} 
+  100% {background-position: 0 100%, 0 100%, 0 100%, 0 100%, 0 100%; } 
+}
+
+body {
+    background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%),
+    #d2d2d2 url(http://stash.rachelnabors.com/24ways2012/background_clouds.png);
+}
+</style>
+
+    <script src="js/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="foreground"></div>
+
+<div class="midground">
+  <div class="tuna"></div>
+</div>
+
+<div class="background">
+</div>
+
+</body>
+
+</html>
